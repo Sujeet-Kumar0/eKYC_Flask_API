@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link href="{{ url_for('static',filename='styles/internal_error.css') }}" rel="stylesheet" type="text/css">
+    <title>Flask API Internal Error</title>
+</head>
+<body>
+<div class="wrapper">
+    <div class="box">
+        <h1>500</h1>
+        <p>Sorry, it's me, not you.</p>
+        <p>&#58;&#40;</p>
+        <p><a href="/">Let me try again!</a></p>
+    </div>
+</div>
+{{error}}
+</body>
+</html>
