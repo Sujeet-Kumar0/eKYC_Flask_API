@@ -1,20 +1,5 @@
 # KYC-Api
 
-## Getting started
-
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it
-easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Architecture of the API
-
-It Just Uses MVC Architecture Try googling it
-
-## Integrate with your tools
-
-It also includes docker.
-
 ## Name
 
 An almost production ready eKYC api
@@ -40,6 +25,14 @@ Additional Docker configuration is available.
 ```docker
 docker build -f Dockerfile .
 ```
+
+## Architecture of the API
+
+It Just Uses MVC Architecture Try googling it
+
+## Integrate with your tools
+
+It also includes docker.
 
 ## Error Codes
 
