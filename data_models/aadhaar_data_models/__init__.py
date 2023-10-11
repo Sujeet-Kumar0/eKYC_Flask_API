@@ -1,0 +1,4 @@
+from .aadhaar_front_model import AadhaarFrontModel
+from .aadhaar_back_model import AadhaarBackModel
+from .aadhaar_data_model import AadhaarDataModel
+from .address_data_model import AddressDataModel

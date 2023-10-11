@@ -1,0 +1,15 @@
+__pycache__/
+/logs/
+/weights/
+/runs/
+/imshow/
+/venv/
+/.vscode/
+/.vs/
+/.idea/
+/.env*/
+/logs/
+imshow.png
+/virtualenv/
+/.aws/
+Cloud-vision-api-SA.json

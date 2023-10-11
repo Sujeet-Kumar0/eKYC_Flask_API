@@ -1,0 +1,3 @@
+from .passport_back_data import PassportBackData
+from .passport_data import PassportData
+from .passport_front_data import PassportFrontData
