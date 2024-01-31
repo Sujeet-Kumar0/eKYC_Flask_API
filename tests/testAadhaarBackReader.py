@@ -1,4 +1,5 @@
 import unittest
+
 from models.FilterAadhaarBackData import AadhaarBackDataReader
 
 
@@ -18,7 +19,6 @@ class TestAadhaarBackDataReader(unittest.TestCase):
         }
 
     def test_read_aadhaar_back_data(self):
-
         raw_text = "_ 5/0 seex Dovoadr 8 #0IOI, Ser pap. AHI SnvodsoB decsss, Sayo Sas. SOR OD, PAY AIK,. Frese - 590008. Address. S/O Late Narayana.D, #1282, Opp Silk. Factory Manandavadi Road, Nellur Shed,. Mysore, Mysore,. Karnataka - 570008. 2120. Download Date 21'. are. 5131 6855 1928. . __VID 9109 5450 43 7. ' Game 1247 bj help uidai.gov.in cep ww. uidai. guw.in i. a. secencd."
         expected_output = {
             "aadhaarNumber": "513168551928",
@@ -46,7 +46,7 @@ class TestAadhaarBackDataReader(unittest.TestCase):
             "pinCode": "534111",
             "state": "Andhra Pradesh"
         }
-        result = self.reader.read_aadhaar_back_data(raw_text,self.data)
+        result = self.reader.read_aadhaar_back_data(raw_text, self.data)
         self.assertEqual(result, expected_output)
         self.maxDiff = None
 

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Flask API</title>
+</head>
+<body>
+<FORM action="/aadhaarfacematch" method="POST">
+    {{value}}
+    <INPUT name="image1" type="text" value=image1>
+    <INPUT name="image2" type="text" value=image2>
+
+    <INPUT type="Submit">
+</FORM>
+<br>
+<FORM action="/aadhaarfrontextract" method="POST">
+    {{value}}
+    <INPUT name="image" type="text" value=aadhaarimageFront>
+    <INPUT type="Submit">
+</FORM>
+<br>
+<FORM action="/aadhaarbackextract" method="POST">
+    {{value}}
+    <INPUT name="image" type="text" value=aadhaarimageBack>
+    <INPUT type="Submit">
+</FORM>
+<br>
+<FORM action="/panextract" method="POST">
+    {{value}}
+    <INPUT name="image" type="text" value=PAN>
+    <INPUT type="Submit">
+</FORM>
+<br>
+</body>
+</html>

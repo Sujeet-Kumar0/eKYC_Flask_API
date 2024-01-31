@@ -1,9 +1,10 @@
-/venv
+/venv/
 /.vscode
 /.vs
 /.idea
 /TestingSamples
-/__pycache__
+*.pyc
+__pycache__/
 /Utils/__pycache__
 /outputs/
 /.env/*
