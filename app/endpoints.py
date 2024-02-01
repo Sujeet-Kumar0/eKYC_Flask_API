@@ -1,16 +1,8 @@
 from flask import Blueprint
-from flask import request, render_template, jsonify
+from flask import request, render_template
 
-from .controllers import (
-    face_matching_controller,
-    AadhaarFrontOCRController,
-    ISUOCRController,
-    PANOCRController,
-    AadhaarBackOCRController,
-    AadhaarMaskingController,
-)
+from .controllers import *
 
-aadhaar_front_ocr_controller = AadhaarFrontOCRController()
 aadhaar_back_ocr_controller = AadhaarBackOCRController()
 pan_ocr_controller = PANOCRController()
 isu_ocr_controller = ISUOCRController()
@@ -40,7 +32,7 @@ def call_face_matching():
     else:
         image1 = request.form["image1"]
         image2 = request.form["image2"]
-    return jsonify(face_matching_controller(image1, image2))
+    return face_matching_controller(image1, image2)
 
 
 @face_matching_bp.route("/manual/aadhaarFaceMatch", methods=["POST"])
@@ -61,16 +53,16 @@ def call_face_matching_in_manual():
     metrics = data.get("metric", None)
     align = data.get("align", True)
 
-    return jsonify(
-        face_matching_controller(
-            image1, image2, model, metrics, backend, enforce_detection
-        )
-    )
+    return face_matching_controller(image1, image2, model, metrics, backend, enforce_detection
+                                    )
+
+
+aadhaar_bp = Blueprint("aadhaar_routes")
 
 
 # Route for aadhaar front OCR
 # This route accepts both JSON and form data
-@app.route("/aadhaarfrontextract", methods=["POST"])
+@aadhaar_bp.route("/aadhaarfrontextract", methods=["POST"])
 def call_aadhaar_front_ocr():
     if request.is_json:
         data = request.get_json()
@@ -78,12 +70,12 @@ def call_aadhaar_front_ocr():
     else:
         # Form Data
         image = request.form["image"]
-    return aadhaar_front_ocr_controller.process_image(image)
+    return aadhaar_front_o_c_r_controller(image)
 
 
 # Route for aadhaar back OCR
 # This route accepts both JSON and form data
-@app.route("/aadhaarbackextract", methods=["POST"])
+@aadhaar_bp.route("/aadhaarbackextract", methods=["POST"])
 def call_aadhaar_back_ocr():
     if request.is_json:
         data = request.get_json()
@@ -102,57 +94,24 @@ def pan_o_c_r():
         image = data["image"]
     else:
         image = request.form["image"]
-    return jsonify(pan_ocr_controller.process_image(image))
+    return pan_ocr_controller.process_image(image)
 
 
 # Route to extract and verify Aadhaar card Details in total
 # This route accepts both JSON and form data
-@app.route("/aadhaarfrontmasking", methods=["POST"])
-def call_aadhaar_front_masking():
-    if request.is_json:
-        data = request.get_json()
-        imageUrl = data["imageUrl"]
-    else:
-        imageUrl = request.form["imageUrl"]
-    return jsonify(aadhaar_front_masking_controller.get_aadhaar_masking(imageUrl))
-
-
-# Route to extract and verify Aadhaar card Details in total
-# This route accepts both JSON and form data
-@app.route("/aadhaarmasking", methods=["POST"])
+@aadhaar_bp.route("/aadhaarmasking", methods=["POST"])
 def call_aadhaar_masking():
     if request.is_json:
         data = request.get_json()
-        imageUrl = data["imageUrl"]
+        image_url = data["imageUrl"]
     else:
-        imageUrl = request.form["imageUrl"]
-    return jsonify(aadhaar_front_masking_controller.get_aadhaar_masking(imageUrl))
-
-
-# Route for Generic OCR
-# This route accepts both JSON and form data
-@app.route("/isuOCR", methods=["POST"])
-def call_isu_o_c_r():
-    lang = "eng"
-    oem = 3
-    psm = 3
-    if request.is_json:
-        data = request.get_json()
-        image = data["image"]
-
-        # Optional values
-        lang = data.get("lang", "eng")
-        oem = data.get("oem", 3)
-        psm = data.get("psm", 3)
-
-    else:
-        image = request.form["image"]
-    return jsonify(isu_ocr_controller.get_text(image, lang, oem, psm))
+        image_url = request.form["imageUrl"]
+    return aadhaar_front_masking_controller.get_aadhaar_masking(image_url)
 
 
 # Route to extract and verify Aadhaar card Details in total
 # This route accepts both JSON and form data
-@app.route("/aadhaarExtract", methods=["POST"])
+@aadhaar_bp.route("/aadhaarExtract", methods=["POST"])
 def call_aadhaar_extract():
     if request.is_json:
         data = request.get_json()
@@ -161,4 +120,4 @@ def call_aadhaar_extract():
     else:
         image1 = request.form["front"]
         image2 = request.form["back"]
-    return jsonify("Under Development")
+    return "Under Development"

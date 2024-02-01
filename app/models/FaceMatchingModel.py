@@ -53,12 +53,12 @@ class FaceMatchingModel:
             return {
                 "status": -1,
                 "error": "Invalid input: Inputs should be either Base64 or Url or Numpy Array",
-            }
+            }, 400
         elif input_type1 != input_type2:
             return {
                 "status": -1,
                 "error": "Both inputs should be either Base64 or Url or Numpy Array",
-            }
+            }, 400
 
         if not self.is_setup_done:
             self.setup()
@@ -84,7 +84,7 @@ class FaceMatchingModel:
                 "similarity_metric": selected_metrics,
                 "detector_backend": selected_backends,
                 "verified": False,
-            }
+            }, 400
 
         return result
 

@@ -14,7 +14,7 @@ class AadhaarFrontOCRModel:
         self.text_extractor = TextExtractor()
         self.text_file_manager = TextFileManager()
 
-    def extract_image(self, image):
+    def extract_image(self, image) -> tuple[dict, int]:
         # print(image)
         url_type = URL_Type.check(image)
         if url_type == URL_Type.UrlType.URL:
@@ -27,7 +27,7 @@ class AadhaarFrontOCRModel:
             return {
                 "status": -1,
                 "message": "Invalid Input it accepts URLs,Base64 Only",
-            }
+            }, 400
 
         # # image pre processing
         # try:
@@ -99,7 +99,7 @@ class AadhaarFrontOCRModel:
                 "message": "Sorry!, Please recapture the image again.",
                 "code": "FCC",
                 "devMsg": str(e.args),
-            }
+            }, 400
 
         # to_unicode = str
         # # data = to_unicode(data)
@@ -117,11 +117,11 @@ class AadhaarFrontOCRModel:
                 "status": -1,
                 "message": "Sorry!, Please recapture the image again.",
                 "devMsg": "NO AADHAAR number found throught string",
-            }
+            }, 406
 
         # data = json.JSONEncoder(sort_keys=True, ensure_ascii=False).encode(data)
         return {
             "status": 0,
             "data": data,
             "message": "Data retrieved successful"
-        }
+        }, 200
