@@ -13,14 +13,25 @@ class FaceMatchingModel:
             "Facenet",
             "Facenet512",
             "OpenFace",
+            "DeepFace",
             "DeepID",
             "ArcFace",
+            "Dlib",
             "SFace",
         ]
-        # models = ["VGG-Face", "Facenet", "Facenet512", "OpenFace", "DeepFace", "DeepID", "ArcFace", "Dlib", "SFace"]
         self.metrics = ["cosine", "euclidean", "euclidean_l2"]
-        self.backends = ["opencv", "mtcnn"]
-        # backends = ['opencv', 'ssd', 'dlib', 'mtcnn', 'retinaface', 'mediapipe']
+        self.backends = [
+            'opencv',
+            'ssd',
+            'dlib',
+            'mtcnn',
+            'retinaface',
+            'mediapipe',
+            'yolov8',
+            'yunet',
+            'fastmtcnn',
+        ]
+        # backends = ['opencv', 'ssd', 'dlib', 'mtcnn','retinaface','mediapipe','yolov8','yunet','fastmtcnn']
         self.is_setup_done = False
 
     def setup(self):
@@ -76,3 +87,6 @@ class FaceMatchingModel:
             }
 
         return result
+
+
+FaceMatchingModel().setup()

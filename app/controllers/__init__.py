@@ -1,14 +1,14 @@
 from .AadhaarBackOCRControllers import AadhaarBackOCRController
 from .AadhaarFrontOCRControllers import AadhaarFrontOCRController
 from .AadhaarMaskingControllers import AadhaarMaskingController
-from .FaceMatchingController import FaceMatchingController
+from .face_matching_controller import face_matching_controller
 from .ISUOCRController import ISUOCRController
 from .panOCRControllers import PANOCRController
 
 __all__ = [
     "AadhaarFrontOCRController",
     "AadhaarBackOCRController",
-    "FaceMatchingController",
+    "face_matching_controller",
     "PANOCRController",
     "ISUOCRController",
     "AadhaarMaskingController",

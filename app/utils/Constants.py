@@ -10,7 +10,7 @@ class Path:
 
         LABEL_PATH = "runs/detect/predict/labels/image0.txt"
 
-        MODEL = "best.pt"
+        MODEL = "../best.pt"
 
         STATES_JSON = "./states.json"
 
